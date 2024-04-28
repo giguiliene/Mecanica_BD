@@ -4,4 +4,4 @@ Esse é um projeto totalmente fictício que vai me preparar para fazer um projet
 
 O BD vai ser implementado aos comandos que estou aprendendo em sala de aula.
 
-Vou utilizar processadores de INSERT para cada tabela criada.
+Vou utilizar processadores de INSERT para cada tabela criada e além das tabelas criadas também vou fazer as procedures para alcançar o objetivo do projeto.

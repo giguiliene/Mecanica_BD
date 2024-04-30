@@ -160,7 +160,6 @@ CREATE TABLE Contabilidade (
     Funcionario INT,
     Despesa VARCHAR(100),
     Observacoes VARCHAR(MAX),
-    FOREIGN KEY (IDPagamento) REFERENCES Pagamento(IDPagamento)
 );
 
 CREATE TABLE ControleDePermissao (
@@ -176,7 +175,7 @@ CREATE TABLE ControleDePermissao (
 	ResultadoDaOperacao VARCHAR(50),
 	IPDeAcesso VARCHAR(255),
 	AcaoDeBloqueio VARCHAR(255),
-	Observações VARCHAR(MAX),
+	ObservaÃ§Ãµes VARCHAR(MAX),
 );
 
 CREATE TABLE DocumentoImagem (
@@ -186,7 +185,7 @@ CREATE TABLE DocumentoImagem (
 	TipoDocumentoImagem VARCHAR(100),
 	DataEnvioCriacao DATE,
 	Descricao VARCHAR(255),
-	Responsável VARCHAR(100),
+	ResponsÃ¡vel VARCHAR(100),
 	Departamento VARCHAR(100),
 	Arquivo VARCHAR(MAX),
 	Status VARCHAR (20),

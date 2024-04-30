@@ -166,7 +166,7 @@ CREATE TABLE ControleDePermissao (
 	IDFuncionario INT PRIMARY KEY,
 	NomeDoUsuario VARCHAR(100),
 	Cargo VARCHAR(50),
-	NomeDeUsuarui VARCHAR(100),
+	NomeDeUsuario VARCHAR(100),
 	Senha VARCHAR(255),
 	NivelDeAcesso VARCHAR(100),
 	Departamento VARCHAR(100),

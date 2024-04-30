@@ -1,4 +1,4 @@
-CREATE PROCEDURE RecuperarClientesPorNome
+CREATE PROCEDURE InsertRecuperarClientesPorNome
     @NomeCliente VARCHAR(100)
 AS
 BEGIN

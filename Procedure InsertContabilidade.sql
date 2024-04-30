@@ -1,4 +1,4 @@
-CREATE PROCEDURE InsertContabilidade (
+CREATE PROCEDURE InserirContabilidade (
     @IDPagamento DECIMAL(10,2),
     @DataPagamento DATE,
     @Descricao VARCHAR(100),

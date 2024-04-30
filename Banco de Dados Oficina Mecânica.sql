@@ -175,7 +175,7 @@ CREATE TABLE ControleDePermissao (
 	ResultadoDaOperacao VARCHAR(50),
 	IPDeAcesso VARCHAR(255),
 	AcaoDeBloqueio VARCHAR(255),
-	Observações VARCHAR(MAX),
+	Observacoes VARCHAR(MAX),
 );
 
 CREATE TABLE DocumentoImagem (

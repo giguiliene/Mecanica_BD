@@ -1,6 +1,6 @@
-CREATE DATABASE OficinadeAutomoveis;
+CREATE DATABASE OficinaDeAutomoveis;
 
-USE OficinaAutomoveis;
+USE OficinaDeAutomoveis;
 
 CREATE TABLE Cliente (
     ClienteID INT PRIMARY KEY,
@@ -12,13 +12,7 @@ CREATE TABLE Cliente (
     Genero VARCHAR(10),
     CPF VARCHAR(20),
     EstadoCivil VARCHAR(20),
-    Observacao VARCHAR(MAX),
-    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-    FOREIGN KEY (idFeedback) REFERENCES FeedbackClinte(idFeedbackCliente,
-    FOREIGN KEY (idVeiculo) REFERENCES Veiculo(idVeiculo),
-    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-    FOREIGN KEY (idContatos) REFERENCES Contatos(idContatos),
-    FOREIGN KEY (idReparacao) REFERENCES Reparação(idReparacao)
+    Observacao VARCHAR(MAX)
 );
 
 CREATE TABLE Veiculo (
@@ -30,8 +24,7 @@ CREATE TABLE Veiculo (
     Quilometragem INT,
     Placa VARCHAR(20),
     DataAquisicao DATE,
-    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-    FOREIGN KEY (idAgendamento) REFERENCES Agendamento(idAgendamento),   
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID)
 );
 
 CREATE TABLE Funcionario (
@@ -43,45 +36,31 @@ CREATE TABLE Funcionario (
     DataContratacao DATE,
     Salario DECIMAL(10,2),
     ContatoEmergencia VARCHAR(100),
-    Qualificacoes VARCHAR(MAX),
-    FOREIGN KEY (idContatos) REFERENCES Contatos(idContatos),
-    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-    FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria),
-    FOREIGN KEY (idContatos) REFERENCES Contatos(idContatos),
-    FOREIGN KEY (idTempoMaoDeObra) REFERENCES TempoMaoDeObra(idTempoMaoDeObra),
-    FOREIGN KEY (idContatos) REFERENCES Contatos(idContatos),
-    FOREIGN KEY (idControleDePermissao) REFERENCES ControleDePermissao(idControleDePermissao)
+    Qualificacoes VARCHAR(MAX)
 );
 
+
 CREATE TABLE Categoria (
-    idCliente INT,
-    idFuncionario INT,
+    idCategoria INT PRIMARY KEY,
     Telefone VARCHAR(20),
     Email VARCHAR(100),
     Morada VARCHAR(100),
-    FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
-    FOREIGN KEY (idFuncionario) REFERENCES Funcionario(idFuncionario)
+    FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
 );
 
 CREATE TABLE CustoMaoDeObra (
-    idPagamento DECIMAL(10,2),
+    idCustoMaoDeObra INT PRIMARY KEY,
     DataPagamento DATE,
     Descricao VARCHAR(100),
     TipoDePagamento VARCHAR(50),
-    Valor INT,
+    Valor DECIMAL(10,2),
     MetodoDePagamento VARCHAR(50),
     NumeroDaFatura VARCHAR(100),
     Fornecedor VARCHAR(100),
     Funcionario INT,
     Despesa VARCHAR(100),
     Observacoes VARCHAR(MAX),
-    FOREIGN KEY (idPagamento) REFERENCES Pagamento(idPagamento)
-);
-
-CREATE TABLE Categoria (
-    idCategoria VARCHAR(50),
-    CustoHora DECIMAL(10,2),
-    FOREIGN KEY (idCategoria) REFERENCES Categoria(idPCategoria)
+    FOREIGN KEY (idCustoMaoDeObra) REFERENCES CustoMaoDeObra(IDCustoMaoDeObra)
 );
 
 CREATE TABLE Reparacao (
@@ -122,27 +101,38 @@ CREATE TABLE PecaEmArmazem (
     Descricao VARCHAR(100),
     CustoUnitario DECIMAL(10,2),
     QuantidadeAtual INT,
-    FOREIGN KEY (idPecaUtilizada) REFERENCES PecaUtilizada(idPecaUtilizada)
+    PecaID INT,
+    FOREIGN KEY (PecaID) REFERENCES PecaUtilizada(PecaID)
 );
+
 
 CREATE TABLE Agendamento (
     IDAgendamento INT PRIMARY KEY,
-    IDVeiculo INT,
-    DataHoraAgendada DATE,
+    VeiculoID INT,
+    DataHoraAgendada DATETIME,
     Status VARCHAR(20),
-    FOREIGN KEY (IDVeiculo) REFERENCES Veiculo(VeiculoID)
+    FOREIGN KEY (VeiculoID) REFERENCES Veiculo(VeiculoID)
 );
 
 CREATE TABLE Pagamentos (
-    IDPagamento DECIMAL(10,2) PRIMARY KEY,
+    IDPagamento INT PRIMARY KEY,
     IDVeiculo INT,
-    DataHoraAgendada DATE,
-    Status VARCHAR(20),
-    FOREIGN KEY (IDVeiculo) REFERENCES Veiculo(VeiculoID)
+    DataPagamento DATE,
+    Descricao VARCHAR(100),
+    TipoDePagamento VARCHAR(50),
+    Valor DECIMAL(10,2),
+    MetodoDePagamento VARCHAR(50),
+    NumeroDaFatura VARCHAR(100),
+    Fornecedor VARCHAR(100),
+    Funcionario INT,
+    Despesa VARCHAR(100),
+    Observacoes VARCHAR(MAX),
+    FOREIGN KEY (IDVeiculo) REFERENCES Veiculo(VeiculoID),
+    FOREIGN KEY (Funcionario) REFERENCES Funcionario(FuncionarioID)
 );
 
 CREATE TABLE FeedbackCliente (
-    IDFeedback VARCHAR(255) PRIMARY KEY,
+    IDFeedback INT PRIMARY KEY,
     IDCliente INT,
     DataEHora DATETIME,
     Avaliacoes VARCHAR(100),
@@ -153,21 +143,6 @@ CREATE TABLE FeedbackCliente (
     CanalDoFeedback VARCHAR(50),
     AcaoTomada VARCHAR(100),
     FOREIGN KEY (IDCliente) REFERENCES Cliente(ClienteID)
-);
-
-CREATE TABLE CustoMaoDeObra (
-    IDPagamento DECIMAL(10,2) PRIMARY KEY,
-    DataPagamento DATE,
-    Descricao VARCHAR(100),
-    TipoDePagamento VARCHAR(50),
-    Valor INT,
-    MetodoDePagamento VARCHAR(50),
-    NumeroDaFatura VARCHAR(100),
-    Fornecedor VARCHAR(100),
-    Funcionario INT,
-    Despesa VARCHAR(100),
-    Observacoes VARCHAR(MAX),
-    FOREIGN KEY (idPagamento) REFERENCES Pagamento(idPagamento)
 );
 
 CREATE TABLE ControleDePermissao (
@@ -184,7 +159,7 @@ CREATE TABLE ControleDePermissao (
     IPDeAcesso VARCHAR(255),
     AcaoDeBloqueio VARCHAR(255),
     Observacoes VARCHAR(MAX),
-    FOREIGN KEY (idFuncionario) REFERENCES Funcionario(idFuncionario)
+    FOREIGN KEY (IDFuncionario) REFERENCES Funcionario(FuncionarioID)
 );
 
 CREATE TABLE DocumentoImagem (
@@ -213,5 +188,5 @@ CREATE TABLE RelatorioEstatistica (
     ArquivoAnexado VARCHAR(255),
     StatusRegistro VARCHAR(20),
     Destinatario VARCHAR(100),
-    FOREIGN KEY (idPagamento) REFERENCES Pagamento(idPagamento)
+    FOREIGN KEY (IDPagamento) REFERENCES Pagamentos(IDPagamento)
 );

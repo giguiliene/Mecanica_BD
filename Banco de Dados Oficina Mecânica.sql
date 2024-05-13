@@ -5,9 +5,6 @@ USE OficinaDeAutomoveis;
 CREATE TABLE Cliente (
     ClienteID INT PRIMARY KEY,
     Nome VARCHAR(100),
-    Morada VARCHAR(100),
-    Telefone VARCHAR(20),
-    Email VARCHAR(100),
     DataNascimento DATE,
     Genero VARCHAR(10),
     CPF VARCHAR(20),
@@ -30,8 +27,6 @@ CREATE TABLE Veiculo (
 CREATE TABLE Funcionario (
     FuncionarioID INT PRIMARY KEY,
     Nome VARCHAR(100),
-    Morada VARCHAR(100),
-    Telefone VARCHAR(20),
     Categoria VARCHAR(50),
     DataContratacao DATE,
     Salario DECIMAL(10,2),

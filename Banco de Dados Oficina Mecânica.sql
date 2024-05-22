@@ -39,6 +39,7 @@ CREATE TABLE Categoria (
     idCategoria INT PRIMARY KEY,
     ClienteID INT,
     FuncionarioID INT,
+    CustoHora DECIMAL(10,2),
     FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
     FOREIGN KEY (FuncionarioID) REFERENCES Funcionario(FuncionarioID)
 );

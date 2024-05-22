@@ -39,9 +39,6 @@ CREATE TABLE Categoria (
     idCategoria INT PRIMARY KEY,
     ClienteID INT,
     FuncionarioID INT,
-    Telefone VARCHAR(20),
-    Email VARCHAR(100),
-    Morada VARCHAR(100),
     FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
     FOREIGN KEY (FuncionarioID) REFERENCES Funcionario(FuncionarioID)
 );

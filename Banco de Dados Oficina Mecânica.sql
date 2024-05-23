@@ -34,7 +34,6 @@ CREATE TABLE Funcionario (
     Qualificacoes VARCHAR(MAX)
 );
 
-
 CREATE TABLE Categoria (
     idCategoria INT PRIMARY KEY,
     ClienteID INT,
@@ -100,7 +99,6 @@ CREATE TABLE PecaEmArmazem (
     PecaID INT,
     FOREIGN KEY (PecaID) REFERENCES PecaUtilizada(PecaID)
 );
-
 
 CREATE TABLE Agendamento (
     IDAgendamento INT PRIMARY KEY,

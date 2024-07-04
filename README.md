@@ -8,3 +8,5 @@ Esse é um projeto totalmente fictício que vai me preparar para fazer um projet
 O BD vai ser implementado aos comandos que estou aprendendo em sala de aula.
 
 Vou utilizar as procedures de INSERT para cada tabela criada para alcançar o objetivo do projeto.
+
+Professor orientador Wesley Neves!
